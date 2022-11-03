@@ -1,0 +1,16 @@
+piVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: artifactory-volume-artifactory-0
+  labels:
+    app: artifactory
+    release: artifactory
+    role: artifactory
+  namespace: svc-artifactory
+spec:
+  storageClassName: csi-rbd-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Gi

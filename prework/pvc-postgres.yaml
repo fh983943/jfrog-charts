@@ -1,0 +1,18 @@
+piVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-artifactory-postgresql-0
+  labels:
+    type: local
+    app: artifactory
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: artifactory
+    role: primary
+  namespace: svc-artifactory
+spec:
+  storageClassName: csi-rbd-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi

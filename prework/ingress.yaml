@@ -1,0 +1,22 @@
+kind: Ingress
+  ApiVersion: networking.k8s.io/v1
+metadata:
+  name: artifactory-https
+  namespace: svc-artifactory
+spec:
+  ingressClassName: public
+  tls:
+    - hosts:
+        - artifactory.jqdomain.com
+      secretName: artifactory-jqdomain-certificate
+  rules:
+    - host: artifactory.jqdomain.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: artifactory-artifactory-nginx
+                port:
+                  number: 80
